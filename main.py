@@ -1,3 +1,15 @@
+import os
+import sys
+
+def limpar_tela():
+    sistema = os.name
+    if sistema == 'posix':  
+        os.system('clear')
+    elif sistema == 'nt':  
+        os.system('cls')
+    else:
+        print("Sistema não suportado: Não é possível limpar a tela neste sistema.")
+
 def main():
     id_global = 1
     while True:
@@ -7,7 +19,8 @@ def main():
         print('2 - Consultar Livro(s)')
         print('3 - Remover Livro')
         print('4 - Atualizar Livro(s)')
-        print('5 - Sair')
+        print('5 - Limpar Tela')
+        print('6 - Sair')
         try:
             opc = int(input('Opção: '))
             print('*' * 82)
@@ -19,6 +32,8 @@ def main():
                 remover_livro()
             elif opc == 4:
                 atualizar_livro()
+            elif opc == 5:
+                limpar_tela()
             elif opc == 5:
                 sys.exit()
             else:
