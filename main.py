@@ -65,6 +65,25 @@ def consultar_livro():
                 print('Opção inválida.')
         except ValueError:
             print('Não aceitamos valores não numéricos.') 
+            
+
+def remover_livro():
+    print('-' * 30 + ' MENU REMOVER LIVRO ' + '-' * 30)
+    try:
+        livro_removido = int(input('Digite o id do livro a ser removido: '))
+        print('*' * 20)
+        livro_encontrado = None
+        for livro in lista_livro:
+            if livro['id'] == livro_removido:
+                livro_encontrado = livro
+                break
+        if livro_encontrado is not None:
+            lista_livro.remove(livro_encontrado)
+            print(f'Livro com ID {livro_removido} foi removido com sucesso.')
+        else:
+            print('ID não encontrado.')
+    except ValueError:
+        print('ID não encontrado.')
 
 def limpar_tela():
     sistema = os.name
