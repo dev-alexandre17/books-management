@@ -14,7 +14,57 @@ def cadastrar_livro(id_global):
     novo_livro = {'id': id_global, 'nome': nome, 'autor': autor, 'editora': editora}
     lista_livro.append(novo_livro)
     
-    return id_global + 1  
+    return id_global + 1 
+
+def consultar_livro():
+    while True:
+        print('-' * 30 + ' MENU CONSULTAR LIVRO ' + '-' * 30)
+        print('Escolha a opção desejada: ')
+        print('1 - Consultar Todos os Livros')
+        print('2 - Consultar Livro por id')
+        print('3 - Consultar Livro(s) por autor')
+        print('4 - Limpar Tela')
+        print('5 - Retornar')
+        try:
+            opc = int(input('Opção: '))
+            print('*' * 82)
+            if opc == 1:
+                print(lista_livro)
+            elif opc == 2:
+                try:
+                    id_livro = int(input('Digite o id do livro: '))
+                    livro_encontrado = None
+                    for livro in lista_livro:
+                        if livro['id'] == id_livro:
+                            livro_encontrado = livro
+                            break
+                    if livro_encontrado is not None:
+                        print(livro_encontrado)
+                    else:
+                        print('ID não encontrado.')
+                except ValueError:
+                    print('Opção inválida. Tente novamente.')
+            elif opc == 3:
+                try:
+                    autor_livro = input('Digite o nome do autor do livro: ')
+                    autor_encontrado = []
+                    for livro in lista_livro:
+                        if livro['autor'] == autor_livro:
+                            autor_encontrado.append(livro)
+                    if autor_encontrado:
+                        print(autor_encontrado)
+                    else:
+                        print('Autor não encontrado.')
+                except ValueError:
+                    print('Opção inválida. Tente novamente.')
+            elif opc == 4:
+                limpar_tela()
+            elif opc == 5:
+                return
+            else:
+                print('Opção inválida.')
+        except ValueError:
+            print('Não aceitamos valores não numéricos.') 
 
 def limpar_tela():
     sistema = os.name
