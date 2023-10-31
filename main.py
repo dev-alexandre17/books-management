@@ -1,6 +1,21 @@
 import os
 import sys
 
+lista_livro = []
+
+def cadastrar_livro(id_global):
+    print('-' * 30 + ' MENU CADASTRAR LIVRO ' + '-' * 30)
+    print('Id do livro: {}'.format(id_global))
+    nome = input('Informe o nome do livro: ')
+    autor = input('Informe o autor (a) do livro: ')
+    editora = input('Informe a editora (o) do livro: ')
+    print('*' * 82)
+    
+    novo_livro = {'id': id_global, 'nome': nome, 'autor': autor, 'editora': editora}
+    lista_livro.append(novo_livro)
+    
+    return id_global + 1  
+
 def limpar_tela():
     sistema = os.name
     if sistema == 'posix':  
